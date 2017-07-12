@@ -60,23 +60,38 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
-    first_word = ''
+    count = 0
     #repeat
         # pick random key from dictionary
         #break loop if key[0] is uppercased
         #from random pair search dict for matching key
-        # use associated value for key and to tuple 
-        #add condition to end or loop will continue 
-    random_grn_words = choice(list(chains))
-    print random_grn_words
+        # use associated value for key and add to tuple 
+        #add condition to end or loop won't continue forever 
+    # print chains
+    current_bigram = choice(chains.keys())
+    for item in current_bigram:
+        words.append(item)
 
-    # your code goes here
-    for next_word in random_grn_words:
-        if next_word.upper():
-            print next_word
-            next_word = first_word
+    while count < len(chains):
+        
+        print current_bigram
+
+        print chains[current_bigram]
+
+        added_word = choice(chains[current_bigram])
+        words.append(added_word)
+        current_bigram = (current_bigram[1], added_word)
+        
+        count = count + 1
+        
+ 
 
 
+
+    
+
+
+words = []
 
 
     #return " ".join(words) next_wo
